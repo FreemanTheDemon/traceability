@@ -17,7 +17,7 @@
 
         function submitHandler(e){
             e.preventDefault()
-            axios.post('/error', {name: nameInput.value, })
+            axios.get('/error')
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
         }
