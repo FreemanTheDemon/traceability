@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
     rollbar.info('HTML file served');
 });
 
-app.get('/', (req, res) => {
+app.get('/error', (req, res) => {
     try {
         nonExistentFunction();
     } catch (error) {
