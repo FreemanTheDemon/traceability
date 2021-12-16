@@ -16,7 +16,7 @@
         const button = document.querySelector('button')
 
         function submitHandler(e){
-            e.preventDefault()
+            e.preventDefault();
             axios.get('/error')
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
