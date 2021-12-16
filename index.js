@@ -17,15 +17,40 @@ app.get('/', (req, res) => {
     rollbar.info('HTML file served');
 });
 
+app.get('/main', (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/main.js'));
+    rollbar.info('JS file served');
+});
+
 app.get('/error', (req, res) => {
-    console.log('hello');
     try {
         nonExistentFunction();
     } catch (error) {
-        console.error(error);
-        console.log(error);
-        // expected output: ReferenceError: nonExistentFunction is not defined
-        // Note - error messages will vary depending on browser
+        console.error(error, 'this is an error');
+        console.log(error, 'this is an error');
+        Rollbar.error('error test');
+    }
+    res.sendStatus(400);
+});
+
+app.get('/warning', (req, res) => {
+    try {
+        nonExistentFunction();
+    } catch (error) {
+        console.error(error, 'this is a warning');
+        console.log(error, 'this is a warning');
+        Rollbar.warning('But it\'s okay because this is just a test.');
+    }
+    res.sendStatus(400);
+});
+
+app.get('/critical', (req, res) => {
+    try {
+        nonExistentFunction();
+    } catch (error) {
+        console.error(error, 'CRITICAL ERROR');
+        console.log(error, 'CRITICAL ERROR');
+        Rollbar.critical('CRITICAL');
     }
     res.sendStatus(400);
 });
