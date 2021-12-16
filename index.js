@@ -15,7 +15,15 @@ var rollbar = new Rollbar({
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'));
     rollbar.info('HTML file served');
+    try {
+        nonExistentFunction();
+    } catch (error) {
+        console.error(error);
+        // expected output: ReferenceError: nonExistentFunction is not defined
+        // Note - error messages will vary depending on browser
+    }
 });
+
 
 app.use(rollbar.errorHandler());
 const port = process.env.PORT || 4545;
