@@ -31,7 +31,7 @@ app.get('/error', (req, res) => {
         nonExistentFunction();
     } catch (error) {
         console.error(error);
-        Rollbar.error('error test');
+        rollbar.error('error test');
     }
     res.sendStatus(400);
 });
@@ -41,7 +41,7 @@ app.get('/warning', (req, res) => {
         nonExistentFunction();
     } catch (error) {
         console.error(error);
-        Rollbar.warning('But it\'s okay because this is just a test.');
+        rollbar.warning('But it\'s okay because this is just a test.');
     }
     res.sendStatus(400);
 });
@@ -51,7 +51,7 @@ app.get('/critical', (req, res) => {
         nonExistentFunction();
     } catch (error) {
         console.error(error);
-        Rollbar.critical('CRITICAL');
+        rollbar.critical('CRITICAL');
     }
     res.sendStatus(400);
 });
