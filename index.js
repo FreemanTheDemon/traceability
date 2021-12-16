@@ -28,8 +28,7 @@ app.get('/error', (req, res) => {
     try {
         nonExistentFunction();
     } catch (error) {
-        console.error(error, 'this is an error');
-        console.log(error, 'this is an error');
+        console.error(error);
         Rollbar.error('error test');
     }
     res.sendStatus(400);
@@ -39,8 +38,7 @@ app.get('/warning', (req, res) => {
     try {
         nonExistentFunction();
     } catch (error) {
-        console.error(error, 'this is a warning');
-        console.log(error, 'this is a warning');
+        console.error(error);
         Rollbar.warning('But it\'s okay because this is just a test.');
     }
     res.sendStatus(400);
@@ -50,8 +48,7 @@ app.get('/critical', (req, res) => {
     try {
         nonExistentFunction();
     } catch (error) {
-        console.error(error, 'CRITICAL ERROR');
-        console.log(error, 'CRITICAL ERROR');
+        console.error(error);
         Rollbar.critical('CRITICAL');
     }
     res.sendStatus(400);
