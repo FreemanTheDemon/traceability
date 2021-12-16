@@ -8,5 +8,20 @@
 </head>
 <body>
     <h1>Hello world</h1>
+
+    <button>error button</button>
+
+    <script>
+        const button = document.querySelector('button')
+
+        function submitHandler(e){
+            e.preventDefault()
+            axios.post('/error', {name: nameInput.value, })
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+        }
+
+        button.addEventListener('click', submitHandler)
+    </script>
 </body>
 </html>
