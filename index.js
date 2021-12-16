@@ -15,6 +15,9 @@ var rollbar = new Rollbar({
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'));
     rollbar.info('HTML file served');
+});
+
+app.get('/', (req, res) => {
     try {
         nonExistentFunction();
     } catch (error) {
