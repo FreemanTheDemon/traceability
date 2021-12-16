@@ -13,13 +13,13 @@ var rollbar = new Rollbar({
   captureUnhandledRejections: true
 });
 
+app.use('/js', express.static(path.join(__dirname, 'public/main.js')))
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'));
     rollbar.info('HTML file served');
 });
 
-app.use('/main.js', express.static(path.join(__dirname, 'public/main.js')))
 
 app.get('/main.js', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/main.js'));
