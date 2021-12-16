@@ -22,10 +22,10 @@ app.get('/error', (req, res) => {
         nonExistentFunction();
     } catch (error) {
         console.error(error);
+        console.log(error);
         // expected output: ReferenceError: nonExistentFunction is not defined
         // Note - error messages will vary depending on browser
     }
-
     res.status(400)
 });
 
