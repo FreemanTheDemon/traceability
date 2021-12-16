@@ -4,6 +4,8 @@ const path = require('path');
 const app = express();
 app.use(express.json());
 
+app.use('/js', express.static(path.join(__dirname, 'public/main.js')))
+
 var Rollbar = require("rollbar");
 var rollbar = new Rollbar({
   accessToken: '4bbd93d53f494be7b5f12a95ef502452',
@@ -17,7 +19,7 @@ app.get('/', (req, res) => {
     rollbar.info('HTML file served');
 });
 
-app.get('/main', (req, res) => {
+app.get('/main.js', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/main.js'));
     rollbar.info('JS file served');
 });
